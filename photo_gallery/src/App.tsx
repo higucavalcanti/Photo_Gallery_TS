@@ -26,11 +26,16 @@ const App = () => {
 
     if(file && file.size > 0) {
       setUploading(true);
-      // faz o envio do arquivo
-      setLoading(false);
-    } else {
+      let result = await Photos.insert(file); //faz o envio e o Loading fica false
+      setLoading(false); // depois faz uma verificação
 
-    }
+      if(result instanceof Error) {
+        alert(`${result.name} - ${result.message}`); // verifica se é um erro
+      } else {
+        let newPhotoList = [...photos];
+        newPhotoList.push(result);
+        setPhotos(newPhotoList) // se não der erro ele atualiza a lista de fotos
+      }
 
   };
 
