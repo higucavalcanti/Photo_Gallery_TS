@@ -4,6 +4,7 @@ export const Container = styled.div`
     background-color: #c21700;
     border-radius: 10px;
     padding: 10px;
+    margin-top: 10px;
 
     .img {
         max-width: 100%;
