@@ -40,6 +40,21 @@ export const UploadForm = styled.form`
     border-radius: 10px;
     margin-botton: 30px;
 
+    input[type="file"] {
+        background-color: #e9788e;
+        border: 0;
+        color: #FFF;
+        padding: 8px 16px;
+        font-size: 15px;
+        border-radius: 10px;
+        margin: 0 20px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: .9;
+        }
+    }
+
     input[type="submit"] {
         background-color: #e9788e;
         border: 0;
