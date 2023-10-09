@@ -19,15 +19,15 @@ const App = () => {
   }, []);
 
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault
+    e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const file = formData.get('image') as File;
 
     if(file && file.size > 0) {
       setUploading(true);
-      let result = await Photos.insert(file); //faz o envio e o Loading fica false
-      setLoading(false); // depois faz uma verificação
+      let result = await Photos.insert(file); //faz o envio e o Uploading fica false
+      setUploading(false); // depois faz uma verificação
 
       if(result instanceof Error) {
         alert(`${result.name} - ${result.message}`); // verifica se é um erro
@@ -47,6 +47,7 @@ const App = () => {
         <C.UploadForm method="POST" onSubmit={handleFormSubmit}>
             <input type="file" name="image" />
             <input type="submit" name="Enviar" />
+            {uploading && "Enviando..."};
         </C.UploadForm>
 
         {loading &&
@@ -73,5 +74,6 @@ const App = () => {
       </C.Area>
     </C.Container>
   );
+  };
 };
 export default App;
